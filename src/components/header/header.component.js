@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crownKB.svg";
 
+import { auth } from "../../firebase/firebase.utils";
+
 import "./header.styles.scss";
 
-const Header = () => (
+const Header = ({ currentUser }) => (
   <div className="header">
     <Link className="logo-container" to="/">
       <Logo className="logo" width={"120px"} height={"120px"} />
@@ -19,6 +21,15 @@ const Header = () => (
       <Link className="option" to="/cart">
         {"cart".toUpperCase()}
       </Link>
+      {currentUser ? (
+        <div className="option" onClick={() => auth.signOut()}>
+          {"Sign Out".toUpperCase()}
+        </div>
+      ) : (
+        <Link className="option" to="/sign-in">
+          SIgn In
+        </Link>
+      )}
     </div>
     <div className="attribute">
       Icons made by{" "}
