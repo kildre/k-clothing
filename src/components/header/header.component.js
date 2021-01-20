@@ -26,8 +26,8 @@ const Header = ({ currentUser }) => (
           {"Sign Out".toUpperCase()}
         </div>
       ) : (
-        <Link className="option" to="/sign-in">
-          SIgn In
+        <Link className="option" to="/signin">
+          {"Sign In".toUpperCase()}
         </Link>
       )}
     </div>
